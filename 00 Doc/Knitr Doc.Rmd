@@ -1,0 +1,52 @@
+---
+output: html_document
+---
+CS 329E Data Visualization - DV_TableauProject2
+===
+**For this project, we use in-depth government census data that focuses on student obesity/overweight rates from elementary to high schools within New York. We utilize SQL commands such as Partition By and rank() in order to display crosstabs in R which match crosstabs made from the same data in Tableau**
+
+**Authors: Bruno De Hoyos (bd8739), Estevan Garza (eg22453)**
+
+###Importing data frames:
+
+We begin by importing some useful libraries:
+
+```{r, warning=FALSE}
+require(bitops)
+require(stats)
+require(ggplot2)
+require(grid)
+require(plyr)
+require(reshape2)
+require(RCurl)
+require(gplots)
+require(tidyr)
+require(dplyr)
+require(jsonlite)
+```
+
+
+
+Our first crosstab ranks the regions across New York which have the highest obesity rates. WE also group these regions by each grade level using the PARTITION function in SQL.
+```{r}
+summary(cars)
+```
+
+The next crosstab involves displaying the difference in obesity numbers each region has, partitioned by grade level,from the whichever region has the respectively highest (max amount) rate of student obesity.
+```{r, echo=FALSE}
+plot(cars)
+```
+
+Our next crosstab displays the nth highest rate of obesity in a region given a grade level. In Tableau the nth slider bar allows the user to choose which tier of statistic he or she wants to see.
+
+```{r}
+summary(cars)
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+The last crosstab we reproduce involves displaying the cumulative distribution of obesity statistics across regions partitioned by grade level.  
+```{r}
+summary(cars)
+```
