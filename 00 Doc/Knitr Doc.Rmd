@@ -27,26 +27,35 @@ require(jsonlite)
 
 
 
-Our first crosstab ranks the regions across New York which have the highest obesity rates. WE also group these regions by each grade level using the PARTITION function in SQL.
+**Our first crosstab ranks the regions across New York which have the highest obesity rates. WE also group these regions by each grade level using the PARTITION function in SQL.**
 ```{r}
 summary(cars)
 ```
+![](./rank.png) 
 
-The next crosstab involves displaying the difference in obesity numbers each region has, partitioned by grade level,from the whichever region has the respectively highest (max amount) rate of student obesity.
+
+
+**The next crosstab involves displaying the difference in obesity numbers each region has, partitioned by grade level,from the whichever region has the respectively highest (max amount) rate of student obesity.**
 ```{r, echo=FALSE}
 plot(cars)
 ```
+![](./Difference:Max.png) 
 
-Our next crosstab displays the nth highest rate of obesity in a region given a grade level. In Tableau the nth slider bar allows the user to choose which tier of statistic he or she wants to see.
 
+
+**Our next crosstab displays the nth highest rate of obesity in a region given a grade level. In Tableau the nth slider bar allows the user to choose which tier of statistic he or she wants to see.**
 ```{r}
 summary(cars)
 ```
+![](./nth.png) 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 
 
-The last crosstab we reproduce involves displaying the cumulative distribution of obesity statistics across regions partitioned by grade level.  
+**The last crosstab we reproduce involves displaying the cumulative distribution of obesity statistics across regions partitioned by grade** level.  
 ```{r}
 summary(cars)
 ```
+![](./CumDist.png) 
+
+

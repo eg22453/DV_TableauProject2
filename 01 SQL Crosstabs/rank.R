@@ -17,14 +17,32 @@ student_weight[,19] <- as.numeric(as.character(student_weight[,19]))
 
 df2 <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
  "SELECT grade_level, region, no_obese, rank() 
- OVER (PARTITION BY grade_level order by grade_level) as RANK 
- FROM weight3 order by 2,3 desc"
+ OVER (PARTITION BY grade_level order by no_obese) as RANK 
+ FROM weight4"
  ')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/ORCL.usuniversi01134.oraclecloud.internal', USER='C##cs329e_bd8739', PASS='orcl_bd8739', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE)))
 
-tbl_df(df)
 
-df2[,3] <- as.numeric(as.character(df2[,3]))
+sw2 <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
+ "SELECT grade_level, region, no_obese, sum(no_obese) OVER (PARTITION BY grade_level, region order by grade_level, region desc) as SUM FROM weight4, rank() OVER (order by sum) as RANK FROM weight4 "
+ ')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/ORCL.usuniversi01134.oraclecloud.internal', USER='C##cs329e_bd8739', PASS='orcl_bd8739', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE))); tbl_df(sw2)
 
-tbl_df(df2)
+
+
+
+
+
+
+
+
+df3 <- data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", '129.152.144.84:5001/rest/native/?query=
+"select empno, deptno, sal, last_value(max_sal) 
+OVER (PARTITION BY deptno order by sal) max_sal, last_value(max_sal) 
+OVER (PARTITION BY deptno order by sal) - sal sal_diff
+from
+(SELECT empno, deptno, sal, max(sal)
+OVER (PARTITION BY deptno) max_sal 
+FROM emp) 
+order by 2,3 desc"
+')),httpheader=c(DB='jdbc:oracle:thin:@129.152.144.84:1521/PDB1.usuniversi01134.oraclecloud.internal', USER='DV_Scott', PASS='orcl', MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON'), verbose = TRUE))); tbl_df(df3)
 
 
