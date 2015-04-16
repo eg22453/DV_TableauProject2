@@ -8,11 +8,13 @@ CS 329E Data Visualization - DV_TableauProject2
 
 **Authors: Bruno De Hoyos (bd8739), Estevan Garza (eg22453)**
 
-> NOTE:
+> **NOTE:**
 >
-> Due to the SQL Database crashing several times over the past few days,
-> our productivity on this project was severly affected. We were unable to get
-> all of the SQL commands for the tables completed because of this.
+> Due to the SQL Database crashing several times over the past few days
+> leading up to the project deadline,
+> our productivity on this project was severly affected. Because of this,
+> we were unable to get
+> all of the SQL commands for the tables completed.
 
 ##Importing data frames:
 
