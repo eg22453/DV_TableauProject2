@@ -3,9 +3,16 @@ output: html_document
 ---
 CS 329E Data Visualization - DV_TableauProject2
 ===
+
 **For this project, we use in-depth government census data that focuses on student obesity/overweight rates from elementary to high schools within New York. We utilize SQL commands such as Partition By and rank() in order to display crosstabs in R which match crosstabs made from the same data in Tableau**
 
 **Authors: Bruno De Hoyos (bd8739), Estevan Garza (eg22453)**
+
+> NOTE:
+>
+> Due to the SQL Database crashing several times over the past few days,
+> our productivity on this project was severly affected. We were unable to get
+> all of the SQL commands for the tables completed because of this.
 
 ##Importing data frames:
 
@@ -28,7 +35,7 @@ source("../01 SQL Crosstabs/rank.R", echo=TRUE, max.deparse.length=1e3)
 
 ##Difference
 
-**The next crosstab involves displaying the difference in obesity numbers each region has, partitioned by grade level,from the whichever region has the respectively highest (max amount) rate of student obesity.**
+**The next crosstab involves making a column with the maximum obesity counts for each grade level, and then computing a difference between this maximum count and the current obesity count. The data is partitioned by grade level and region.**
 
 ####SQL:
 ```{r, echo=FALSE}
@@ -39,7 +46,7 @@ source("../01 SQL Crosstabs/rank.R", echo=TRUE, max.deparse.length=1e3)
 
 ##Nth
 
-**Our next crosstab displays the nth highest rate of obesity in a region given a grade level. In Tableau the nth slider bar allows the user to choose which tier of statistic he or she wants to see.**
+**Our next crosstab displays the nth highest rate of obesity in a region given a grade level. In Tableau the nth slider bar allows the user to choose which tier of statistic he or she wants to see. The figure below shows the 2nd highest (n=2) obesity rate for each grade level.**
 
 ####SQL:
 ```{r}
@@ -48,11 +55,9 @@ source("../01 SQL Crosstabs/rank.R", echo=TRUE, max.deparse.length=1e3)
 ####Tableau:
 ![](./nth2.png) 
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.**
-
 ##Percentile
 
-**The last crosstab we reproduce involves displaying the cumulative distribution of obesity statistics across regions partitioned by grade level.**
+**The last crosstab we reproduce involves displaying the cumulative distribution, or percentile, for each of the obesity counts across regions partitioned by grade level.**
 
 ####SQL:
 ```{r}
