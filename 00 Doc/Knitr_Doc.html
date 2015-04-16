@@ -136,29 +136,7 @@ img {
 <p><strong>The next crosstab involves making a column with the maximum obesity counts for each grade level, and then computing a difference between this maximum count and the current obesity count. The data is partitioned by grade level and region.</strong></p>
 <div id="sql-1" class="section level4">
 <h4>SQL:</h4>
-<pre><code>## 
-## &gt; sw2 &lt;- data.frame(fromJSON(getURL(URLencode(gsub(&quot;\n&quot;, 
-## +     &quot; &quot;, &quot;129.152.144.84:5001/rest/native/?query=\n \&quot;SELECT grade_level, region, no_obese, sum(no_obese) OVER (PARTITION BY grade_level, region order by grade_level, region desc) as SUM FROM weight4\&quot;\n &quot;)), 
-## +     httpheader = c(DB = &quot;jdbc:oracle:thin:@129.152.144.84:1521/ORCL.usuniversi01134.oraclecloud.internal&quot;, 
-## +         USER = &quot;C##cs329e_bd8739&quot;, PASS = &quot;orcl_bd8739&quot;, MODE = &quot;native_mode&quot;, 
-## +         MODEL = &quot;model&quot;, returnDimensions = &quot;False&quot;, returnFor = &quot;JSON&quot;), 
-## +     verbose = TRUE)))
-## 
-## &gt; tbl_df(sw2)
-## Source: local data frame [3,270 x 4]
-## 
-##       GRADE_LEVEL           REGION NO_OBESE   SUM
-## 1  DISTRICT TOTAL CENTRAL NEW YORK       78 44487
-## 2  DISTRICT TOTAL CENTRAL NEW YORK      108 44487
-## 3  DISTRICT TOTAL CENTRAL NEW YORK       24 44487
-## 4  DISTRICT TOTAL CENTRAL NEW YORK       73 44487
-## 5  DISTRICT TOTAL CENTRAL NEW YORK       25 44487
-## 6  DISTRICT TOTAL CENTRAL NEW YORK      507 44487
-## 7  DISTRICT TOTAL CENTRAL NEW YORK       54 44487
-## 8  DISTRICT TOTAL CENTRAL NEW YORK      187 44487
-## 9  DISTRICT TOTAL CENTRAL NEW YORK       70 44487
-## 10 DISTRICT TOTAL CENTRAL NEW YORK      392 44487
-## ..            ...              ...      ...   ...</code></pre>
+<pre><code>SQL query for difference table would have been here.</code></pre>
 </div>
 <div id="tableau-1" class="section level4">
 <h4>Tableau:</h4>
@@ -170,30 +148,7 @@ img {
 <p><strong>Our next crosstab displays the nth highest rate of obesity in a region given a grade level. In Tableau the nth slider bar allows the user to choose which tier of statistic he or she wants to see. The figure below shows the 2nd highest (n=2) obesity rate for each grade level.</strong></p>
 <div id="sql-2" class="section level4">
 <h4>SQL:</h4>
-<pre class="r"><code>source(&quot;../01 SQL Crosstabs/rank.R&quot;, echo=TRUE, max.deparse.length=1e3)</code></pre>
-<pre><code>## 
-## &gt; sw2 &lt;- data.frame(fromJSON(getURL(URLencode(gsub(&quot;\n&quot;, 
-## +     &quot; &quot;, &quot;129.152.144.84:5001/rest/native/?query=\n \&quot;SELECT grade_level, region, no_obese, sum(no_obese) OVER (PARTITION BY grade_level, region order by grade_level, region desc) as SUM FROM weight4\&quot;\n &quot;)), 
-## +     httpheader = c(DB = &quot;jdbc:oracle:thin:@129.152.144.84:1521/ORCL.usuniversi01134.oraclecloud.internal&quot;, 
-## +         USER = &quot;C##cs329e_bd8739&quot;, PASS = &quot;orcl_bd8739&quot;, MODE = &quot;native_mode&quot;, 
-## +         MODEL = &quot;model&quot;, returnDimensions = &quot;False&quot;, returnFor = &quot;JSON&quot;), 
-## +     verbose = TRUE)))
-## 
-## &gt; tbl_df(sw2)
-## Source: local data frame [3,270 x 4]
-## 
-##       GRADE_LEVEL           REGION NO_OBESE   SUM
-## 1  DISTRICT TOTAL CENTRAL NEW YORK       78 44487
-## 2  DISTRICT TOTAL CENTRAL NEW YORK      108 44487
-## 3  DISTRICT TOTAL CENTRAL NEW YORK       24 44487
-## 4  DISTRICT TOTAL CENTRAL NEW YORK       73 44487
-## 5  DISTRICT TOTAL CENTRAL NEW YORK       25 44487
-## 6  DISTRICT TOTAL CENTRAL NEW YORK      507 44487
-## 7  DISTRICT TOTAL CENTRAL NEW YORK       54 44487
-## 8  DISTRICT TOTAL CENTRAL NEW YORK      187 44487
-## 9  DISTRICT TOTAL CENTRAL NEW YORK       70 44487
-## 10 DISTRICT TOTAL CENTRAL NEW YORK      392 44487
-## ..            ...              ...      ...   ...</code></pre>
+<pre><code>SQL query for Nth table would have been here.</code></pre>
 </div>
 <div id="tableau-2" class="section level4">
 <h4>Tableau:</h4>
@@ -205,30 +160,7 @@ img {
 <p><strong>The last crosstab we reproduce involves displaying the cumulative distribution, or percentile, for each of the obesity counts across regions partitioned by grade level.</strong></p>
 <div id="sql-3" class="section level4">
 <h4>SQL:</h4>
-<pre class="r"><code>source(&quot;../01 SQL Crosstabs/rank.R&quot;, echo=TRUE, max.deparse.length=1e3)</code></pre>
-<pre><code>## 
-## &gt; sw2 &lt;- data.frame(fromJSON(getURL(URLencode(gsub(&quot;\n&quot;, 
-## +     &quot; &quot;, &quot;129.152.144.84:5001/rest/native/?query=\n \&quot;SELECT grade_level, region, no_obese, sum(no_obese) OVER (PARTITION BY grade_level, region order by grade_level, region desc) as SUM FROM weight4\&quot;\n &quot;)), 
-## +     httpheader = c(DB = &quot;jdbc:oracle:thin:@129.152.144.84:1521/ORCL.usuniversi01134.oraclecloud.internal&quot;, 
-## +         USER = &quot;C##cs329e_bd8739&quot;, PASS = &quot;orcl_bd8739&quot;, MODE = &quot;native_mode&quot;, 
-## +         MODEL = &quot;model&quot;, returnDimensions = &quot;False&quot;, returnFor = &quot;JSON&quot;), 
-## +     verbose = TRUE)))
-## 
-## &gt; tbl_df(sw2)
-## Source: local data frame [3,270 x 4]
-## 
-##       GRADE_LEVEL           REGION NO_OBESE   SUM
-## 1  DISTRICT TOTAL CENTRAL NEW YORK       78 44487
-## 2  DISTRICT TOTAL CENTRAL NEW YORK      108 44487
-## 3  DISTRICT TOTAL CENTRAL NEW YORK       24 44487
-## 4  DISTRICT TOTAL CENTRAL NEW YORK       73 44487
-## 5  DISTRICT TOTAL CENTRAL NEW YORK       25 44487
-## 6  DISTRICT TOTAL CENTRAL NEW YORK      507 44487
-## 7  DISTRICT TOTAL CENTRAL NEW YORK       54 44487
-## 8  DISTRICT TOTAL CENTRAL NEW YORK      187 44487
-## 9  DISTRICT TOTAL CENTRAL NEW YORK       70 44487
-## 10 DISTRICT TOTAL CENTRAL NEW YORK      392 44487
-## ..            ...              ...      ...   ...</code></pre>
+<pre><code>SQL query for percentile table would have been here.</code></pre>
 </div>
 <div id="tableau-3" class="section level4">
 <h4>Tableau:</h4>
